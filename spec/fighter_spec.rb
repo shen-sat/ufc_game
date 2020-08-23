@@ -13,4 +13,12 @@ describe 'Fighter' do
 	it 'raises error with invalid attributes' do
 		expect{ Fighter.new }.to raise_error(ArgumentError, 'missing keywords: name, lastname, aggression')
 	end
+
+	it 'calculates initiate_action_score' do
+		attrs = { name: 'Diego', lastname: 'Costa', aggression: 9 }
+		fighter = Fighter.new(attrs)
+		allow(Random).to receive(:rand).and_return(5)
+
+		expect(fighter.initiate_action_score).to eq(14)
+	end
 end

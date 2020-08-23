@@ -6,4 +6,8 @@ class Fighter
 		@lastname = lastname
 		@aggression = aggression
 	end
+
+	def initiate_action_score
+		return Random.rand(1..10) + aggression
+	end
 end
