@@ -9,4 +9,10 @@ class Fight
 	def aggressor
 		fighter_a.initiate_action_score > fighter_b.initiate_action_score ? fighter_a : fighter_b 
 	end
+
+	def step
+		sleep 5
+		agg = aggressor
+		# commentary(agg, :aggressor)
+	end
 end
