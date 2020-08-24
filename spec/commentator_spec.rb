@@ -9,4 +9,14 @@ describe 'Commentator' do
 		expect(commentator.commentary[:aggressor]).to eq(['Fighter A presses'])
 		expect(commentator.commentary[:stalemate]).to eq(['Neither fighter moves'])
 	end
+
+	it 'says aggresor line for fighter' do
+		commentary = { aggressor: ['{fighter.lastname} presses'] }
+		commentator = Commentator.new(commentary)
+		
+		fighter = double()
+		allow(fighter).to receive(:lastname).and_return('Romero') 
+
+		expect(commentator.say(fighter, :aggressor)).to eq('Romero presses')
+	end
 end
