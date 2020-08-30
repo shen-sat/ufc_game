@@ -7,6 +7,8 @@ class Fight
 	end
 
 	def aggressor
+		return if fighter_a.initiate_action_score == fighter_b.initiate_action_score
+		
 		fighter_a.initiate_action_score > fighter_b.initiate_action_score ? fighter_a : fighter_b 
 	end
 
