@@ -1,21 +1,18 @@
 require_relative '../lib/fight.rb'
 
 describe 'Fight' do
+	let(:fighter_a) { double() }
+	let(:fighter_b) { double() }
+	let(:commentator) { double() }
+	let(:fight) { Fight.new(fighter_a: fighter_a, fighter_b: fighter_b, commentator: commentator) }
 
-	it 'initializes with two fighters' do
-		fighter_a = double()
-		fighter_b = double()
-		fight = Fight.new(fighter_a: fighter_a, fighter_b: fighter_b)
-
+	it 'initializes with correct attributes' do
 		expect(fight.fighter_a).to eq(fighter_a)
 		expect(fight.fighter_b).to eq(fighter_b)
+		expect(fight.commentator).to eq(commentator)
 	end
 
 	it 'returns the aggressor' do
-		fighter_a = double()
-		fighter_b = double()
-		fight = Fight.new(fighter_a: fighter_a, fighter_b: fighter_b)
-
 		allow(fighter_a).to receive(:initiate_action_score).and_return(19)
 		allow(fighter_b).to receive(:initiate_action_score).and_return(11)
 
@@ -23,10 +20,6 @@ describe 'Fight' do
 	end
 
 	it 'returns nil when aggressors have same score' do
-		fighter_a = double()
-		fighter_b = double()
-		fight = Fight.new(fighter_a: fighter_a, fighter_b: fighter_b)
-
 		allow(fighter_a).to receive(:initiate_action_score).and_return(19)
 		allow(fighter_b).to receive(:initiate_action_score).and_return(19)
 
@@ -34,10 +27,6 @@ describe 'Fight' do
 	end
 
 	it 'sleeps for 5 seconds' do
-		fighter_a = double()
-		fighter_b = double()
-		fight = Fight.new(fighter_a: fighter_a, fighter_b: fighter_b)
-
 		allow(fighter_a).to receive(:initiate_action_score)
 		allow(fighter_b).to receive(:initiate_action_score)
 
@@ -47,10 +36,6 @@ describe 'Fight' do
 	end
 
 	it 'calls aggressor' do
-		fighter_a = double()
-		fighter_b = double()
-		fight = Fight.new(fighter_a: fighter_a, fighter_b: fighter_b)
-
 		allow(fight).to receive(:sleep)
 		allow(fighter_a).to receive(:initiate_action_score)
 		allow(fighter_b).to receive(:initiate_action_score)
@@ -59,5 +44,7 @@ describe 'Fight' do
 
 		fight.step
 	end
+
+
 
 end
