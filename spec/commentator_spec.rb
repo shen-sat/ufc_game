@@ -19,4 +19,11 @@ describe 'Commentator' do
 
 		expect(commentator.say(fighter, :aggressor)).to eq('Romero presses')
 	end
+
+	it 'says stalemate line for nil' do
+		commentary = { stalemate: ['Neither fighter presses'] }
+		commentator = Commentator.new(commentary)
+
+		expect(commentator.say(nil, :aggressor)).to eq('Neither fighter presses')
+	end
 end

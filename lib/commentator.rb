@@ -6,8 +6,12 @@ class Commentator
 	end
 
 	def say(fighter, action)
-		line = choose_line(action)
-		fill_in(fighter, line)
+		if fighter
+			line = choose_line(action)
+			fill_in(fighter, line)
+		else
+			choose_line(:stalemate)
+		end
 	end
 
 private
