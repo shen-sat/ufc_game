@@ -44,7 +44,7 @@ describe 'Fight' do
 		allow(fighter_a).to receive(:initiate_action_score).and_return(19)
 		allow(fighter_b).to receive(:initiate_action_score).and_return(11)
 
-		expect(fight).to receive(:aggressor)
+		expect(fight.aggressor).to eq(fighter_a)
 
 		fight.step
 	end
