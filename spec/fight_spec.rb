@@ -29,22 +29,20 @@ describe 'Fight' do
 	it 'sleeps for 5 seconds' do
 		allow(fighter_a).to receive(:initiate_action_score)
 		allow(fighter_b).to receive(:initiate_action_score)
-
+		allow(commentator).to receive(:say)
+		
 		expect(fight).to receive(:sleep).with(5)
 
 		fight.step
 	end
 
-	it 'calls aggressor' do
+	it 'returns an aggressor line' do
 		allow(fight).to receive(:sleep)
-		allow(fighter_a).to receive(:initiate_action_score)
-		allow(fighter_b).to receive(:initiate_action_score)
+		allow(fight).to receive(:aggressor).and_return(fighter_a)
+		allow(commentator).to receive(:say).with(fighter_a, :aggressor).and_return('Fighter A presses!')
 
-		expect(fight).to receive(:aggressor)
+		expect(fight.step).to eq('Fighter A presses!')
 
-		fight.step
 	end
-
-
 
 end
