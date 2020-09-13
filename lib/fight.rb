@@ -16,6 +16,6 @@ class Fight
 	def step
 		sleep 5
 		agg = aggressor
-		commentator.say(agg, :aggressor)
+		puts commentator.say(agg, :aggressor)
 	end
 end

@@ -17,7 +17,10 @@ class Commentator
 private
 
 	def choose_line(action)
-		commentary[action].sample
+		# puts action.is_a?(Symbol)
+		# puts "action is: #{action}"
+		# puts "commentary action is: #{commentary[action]}"
+		commentary[action.to_s].sample
 	end
 
 	def fill_in(fighter, line)

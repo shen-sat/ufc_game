@@ -3,7 +3,7 @@ require_relative '../lib/commentator.rb'
 describe 'Commentator' do
 	
 	it 'initializes with a commentary file' do
-		commentary = { aggressor: ['Fighter A presses'], stalemate: ['Neither fighter moves'] }
+		commentary = { 'aggressor': ['Fighter A presses'], stalemate: ['Neither fighter moves'] }
 		commentator = Commentator.new(commentary)
 
 		expect(commentator.commentary[:aggressor]).to eq(['Fighter A presses'])
@@ -11,7 +11,7 @@ describe 'Commentator' do
 	end
 
 	it 'says aggresor line for fighter' do
-		commentary = { aggressor: ['{fighter.lastname} presses'] }
+		commentary = { 'aggressor' => ['{fighter.lastname} presses'] }
 		commentator = Commentator.new(commentary)
 		
 		fighter = double()
@@ -21,7 +21,7 @@ describe 'Commentator' do
 	end
 
 	it 'says stalemate line for nil' do
-		commentary = { stalemate: ['Neither fighter presses'] }
+		commentary = { 'stalemate' => ['Neither fighter presses'] }
 		commentator = Commentator.new(commentary)
 
 		expect(commentator.say(nil, :aggressor)).to eq('Neither fighter presses')

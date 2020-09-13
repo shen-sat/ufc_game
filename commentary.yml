@@ -1,0 +1,4 @@
+aggressor:
+  - '{fighter.lastname} presses'
+stalemate:
+  - 'Neither fighter moves'
